@@ -8,7 +8,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 class UserManager(BaseUserManager):
     def create_user(self,user_id, user_mobile_number, user_email, ):
         if not user_email:
-            raise ValueError("Users must have an email address")
+            raise ValueError("Users must have an mobile number")
         
         user = self.model(
             user_email = user_email,
@@ -23,9 +23,10 @@ class UserManager(BaseUserManager):
         return user
 class User(AbstractBaseUser):
     user_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    user_email = models.EmailField(max_length=225, unique=True)
-    user_mobile_number = models.CharField(max_length=225, unique=True)
-    user_name = models.CharField(max_length=225,null=True)
+    user_email = models.EmailField(max_length=225, unique=True , null=True,blank=True)
+    user_mobile_number = models.CharField(max_length=10,unique=True)
+    user_name = models.CharField(max_length=225,null=True,blank=True)
+    is_verify = models.BooleanField(default=False, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     objects = UserManager()
 

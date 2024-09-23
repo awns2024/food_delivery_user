@@ -3,4 +3,8 @@ from .views import *
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
-urlpatterns = []
+urlpatterns = [
+  
+     path('login/', UserLoginView.as_view(), name = 'user login'),
+     path('delete/', UserDeleteView.as_view(), name = 'user delete'),
+]

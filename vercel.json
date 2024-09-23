@@ -1,0 +1,13 @@
+{
+    "builds": [{
+        "src": "food_delivery_user/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize" : "500mb", "runtime": "python3.12.0" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "food_delivery_user/wsgi.py"
+        }
+    ]
+} 
