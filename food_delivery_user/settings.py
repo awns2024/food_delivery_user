@@ -81,7 +81,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "food_delivery_user.wsgi.application"
-ASGI_APPLICATION = "food_delivery_user.wsgi.application"
+ASGI_APPLICATION = "food_delivery_user.asgi.application"
 
 
 # Database
