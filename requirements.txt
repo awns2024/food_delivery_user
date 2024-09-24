@@ -1,4 +1,4 @@
-Django==4.1.13
+Django==5.1.1
 django-cryptography==1.1
 django-filter==23.3
 django-import-export==4.1.1
