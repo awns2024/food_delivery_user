@@ -45,7 +45,6 @@ def createUser(dataa):
         verification_id = otpSender(id,mobile_number)
         return verification_id
        
-        
        
        
         
@@ -97,3 +96,16 @@ class UserDeleteView(APIView):
             'status': status.HTTP_200_OK,
             'message': "All users deleted successfully"
         }, status=200)
+        
+        
+        
+        
+class UserUpdateView(APIView):
+    serializer_class = UserSerializer
+    def patch(self, request,id):
+        user = User.objects.get(user_id=id)
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
