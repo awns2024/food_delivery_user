@@ -49,6 +49,7 @@ def createUser(dataa):
        
         
 class UserLoginView(GenericAPIView):
+    serializer_class = UserSerializer
     def post(self, request, format=None):
         mobile_number = request.data.get('user_mobile_number')
      
