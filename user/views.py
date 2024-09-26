@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.generics import GenericAPIView
-from user.serializers import UserSerializer
+from user.serializers import UserSerializer,UserAllDetailSerializer
 from rest_framework.views import APIView
 from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response
@@ -101,9 +101,10 @@ class UserDeleteView(APIView):
         
         
         
-class UserUpdateView(APIView):
-    serializer_class = UserSerializer
-    def patch(self, request,id):
+class UserUpdateView(GenericAPIView):
+    serializer_class = UserAllDetailSerializer
+    def patch(self, request,input,format=None):
+        id = input
         user = User.objects.get(user_id=id)
         serializer = UserSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():

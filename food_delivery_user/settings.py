@@ -88,11 +88,16 @@ ASGI_APPLICATION = "food_delivery_user.asgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'fooddelivery',
+        'USER': 'aman',
+        'PASSWORD': 'aman@1010',
+        'HOST': 'postgresql-184206-0.cloudclusters.net',
+        'PORT': '19533',
     }
 }
+
 
 REST_FRAMEWORK = {
      'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
